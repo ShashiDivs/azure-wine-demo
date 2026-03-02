@@ -45,12 +45,12 @@ jobs:
       - name: Configure Azure Web App settings
         run: |
           az webapp config appsettings set \
-            --resource-group wine-classifier-rg-demo \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }}\
             --name ${{secrets.AZURE_WEBAPP_NAME}} \
             --settings WEBSITES_PORT=8000 SCM_DO_BUILD_DURING_DEPLOYMENT=true
 
           az webapp config set \
-            --resource-group wine-classifier-rg-demo \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }}\
             --name ${{secrets.AZURE_WEBAPP_NAME}} \
             --startup-file "bash startup.sh"
 
