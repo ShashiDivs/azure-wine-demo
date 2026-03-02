@@ -58,10 +58,10 @@ jobs:
       - name: Deploy using az webapp up
         run: |
           az webapp up \
-            --resource-group wine-classifier-rg-demo \
-            --plan ${{secrets.AZURE_WEBAPP_NAME}} \
-            --runtime "PYTHON|3.11" \
-            --os.type linux \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --name ${{ secrets.AZURE_WEBAPP_NAME }} \
+            --runtime "PYTHON:3.11" \
+            --os-type linux \
             --logs
         
 
